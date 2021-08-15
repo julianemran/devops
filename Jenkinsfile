@@ -30,10 +30,12 @@ pipeline {
             }
         }
         stage('Stop and Removing'){
-            sh 'docker stop fastapicont'
-            sh 'docker rm fastapicont'
-            sh 'docker rmi fastapicont'
-            echo 'Finish'
+            steps {
+                sh 'docker stop fastapicont'
+                sh 'docker rm fastapicont'
+                sh 'docker rmi fastapicont'
+                echo 'Finished'
+            }
         }
     }
 }
