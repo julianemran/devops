@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout SCM') {
             steps {
-                sh 'git clone https://github.com/altooro/fastapi-demo-server.git'
+                git branch: 'main', url: 'https://github.com/julianemran/devops.git'
             }
         }
         stage('Build') {
