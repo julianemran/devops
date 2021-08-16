@@ -6,34 +6,18 @@ pipeline {
     stages {
         stage('Checkout SCM') {
             steps {
-                git branch: 'main', url: 'https://github.com/julianemran/devops.git'
+                echo 'Clone the repo '
+                sh 'git clone https://github.com/julianemran/devops.git'
             }
         }
-        stage('Build') {
+        stage('Check what is new') {
             steps {
-                sh 'docker build -t fastapiimage .'
-                echo 'Build completed'
+                sh 'cat devops/test_api.py'
             }
         }
-        stage('Run') {
+        stage('Removing'){
             steps {
-                sh 'docker run -d --name fastapicont -p 8000:80 fastapiimage'
-                echo 'Run completed'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo "----------------------------"
-                sh 'pytest test_api.py -v'
-                echo 'Testing completed'
-                echo "----------------------------"
-            }
-        }
-        stage('Stop and Removing'){
-            steps {
-                sh 'docker stop fastapicont'
-                sh 'docker rm fastapicont'
-                sh 'docker rmi fastapicont'
+                sh 'rm -fr devops'
                 echo 'Finished'
             }
         }
