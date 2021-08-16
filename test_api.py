@@ -59,7 +59,7 @@ def test_deleting_users():
 """
 import requests
 #import pytest
-
+new comment
 
 def getCourse(id):
     URL = "http://localhost/courses-svc/courses/{0}".format(id)
