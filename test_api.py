@@ -1,7 +1,7 @@
 import requests
 #import pytest
 
-
+#get user response
 def getUserResponse(id):
     URL = "http://localhost:8000/user/{0}".format(id)
     res = requests.get(url=URL).json()
